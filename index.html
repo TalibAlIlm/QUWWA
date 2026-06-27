@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -8,98 +8,76 @@
 <title>QUWWA — Strength Log</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=Noto+Naskh+Arabic:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=Cairo:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0b0d0c; --bg2:#0e1210; --panel:#14191600; --card:#141a16; --card2:#19211c;
+  --bg:#0b0d0c; --bg2:#0e1210; --card:#141a16; --card2:#19211c;
   --line:rgba(202,255,63,.10); --line2:rgba(255,255,255,.07);
   --ink:#eef3ea; --muted:#8c978b; --faint:#5d6960;
   --volt:#caff3f; --volt2:#a6e02a; --voltglow:rgba(202,255,63,.35);
   --amber:#ffc233; --amber2:#e0a522; --amberglow:rgba(255,194,51,.4);
   --bad:#ff6f61;
-  --d:'Bebas Neue',sans-serif;
-  --h:'Barlow Condensed',sans-serif;
-  --b:'Inter',system-ui,sans-serif;
-  --ar:'Noto Naskh Arabic',serif;
+  --d:'Bebas Neue',sans-serif; --h:'Barlow Condensed',sans-serif; --b:'Inter',system-ui,sans-serif;
 }
+html[lang="ar"]{--h:'Cairo',sans-serif; --b:'Cairo',system-ui,sans-serif}
+html[lang="ar"] body *{letter-spacing:normal!important;text-transform:none!important}
+html[lang="ar"] .logo,html[lang="ar"] .pb-val,html[lang="ar"] .stat .v,html[lang="ar"] .hv,
+html[lang="ar"] .pl-time,html[lang="ar"] .wn,html[lang="ar"] .cm,html[lang="ar"] .logfield input,
+html[lang="ar"] .wu-it .wdur,html[lang="ar"] .toast .ti{font-family:'Bebas Neue',sans-serif}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
-body{
-  font-family:var(--b); color:var(--ink); background:var(--bg);
-  min-height:100vh; min-height:100dvh; overflow-x:hidden;
-  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+body{font-family:var(--b);color:var(--ink);background:var(--bg);min-height:100vh;min-height:100dvh;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
   background-image:
     radial-gradient(120% 80% at 50% -10%, rgba(202,255,63,.06), transparent 60%),
     radial-gradient(90% 60% at 100% 100%, rgba(255,194,51,.04), transparent 55%),
     repeating-linear-gradient(90deg, rgba(255,255,255,.014) 0 1px, transparent 1px 64px),
-    repeating-linear-gradient(0deg, rgba(255,255,255,.014) 0 1px, transparent 1px 64px);
-}
+    repeating-linear-gradient(0deg, rgba(255,255,255,.014) 0 1px, transparent 1px 64px);}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
-
 .wrap{max-width:760px;margin:0 auto;padding:0 18px 120px;position:relative}
 
-/* ── Topbar ─────────────────────────────── */
-.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:12px;
+.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:10px;
   padding:16px 0 14px;background:linear-gradient(180deg,var(--bg) 62%,rgba(11,13,12,0));}
 .brand{display:flex;align-items:baseline;gap:9px;flex:1;min-width:0}
-.logo{font-family:var(--d);font-size:30px;line-height:.8;letter-spacing:.04em;
-  color:var(--ink);position:relative;white-space:nowrap}
+.logo{font-family:var(--d);font-size:30px;line-height:.8;letter-spacing:.04em;color:var(--ink);white-space:nowrap}
 .logo b{color:var(--volt);font-weight:400}
-.logo .ar{font-family:var(--ar);font-size:18px;color:var(--volt);margin-left:2px;
-  letter-spacing:0;position:relative;top:-1px;opacity:.9}
-.tag{font-family:var(--h);font-size:10px;font-weight:600;letter-spacing:.28em;
-  text-transform:uppercase;color:var(--faint);white-space:nowrap}
 .tbtns{display:flex;gap:8px}
-.ic{width:40px;height:40px;border-radius:11px;border:1px solid var(--line2);
-  background:var(--card);color:var(--ink);display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:.16s;flex-shrink:0}
-.ic svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.9;
-  stroke-linecap:round;stroke-linejoin:round}
+.ic{width:40px;height:40px;border-radius:11px;border:1px solid var(--line2);background:var(--card);
+  color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.16s;flex-shrink:0}
+.ic svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .ic:hover{border-color:var(--line);color:var(--volt);transform:translateY(-1px)}
 .ic:active{transform:translateY(0) scale(.96)}
-
-/* warm-up CTA */
-.warm{width:auto;padding:0 15px;gap:9px;font-family:var(--h);font-weight:700;
-  font-size:14px;letter-spacing:.14em;text-transform:uppercase;
-  color:#10140f;background:var(--volt);border:none;box-shadow:0 0 0 1px var(--volt2),0 6px 22px -8px var(--voltglow)}
+.warm{width:auto;padding:0 15px;gap:9px;font-family:var(--h);font-weight:700;font-size:14px;letter-spacing:.14em;
+  text-transform:uppercase;color:#10140f;background:var(--volt);border:none;
+  box-shadow:0 0 0 1px var(--volt2),0 6px 22px -8px var(--voltglow)}
 .warm svg{stroke:#10140f;stroke-width:2.1}
 .warm:hover{color:#10140f;background:#d8ff5c;transform:translateY(-1px)}
 
-/* ── Scoreboard / hero ──────────────────── */
-.board{margin-top:6px;border:1px solid var(--line2);border-radius:20px;
+.board{margin-top:11px;border:1px solid var(--line2);border-radius:20px;
   background:linear-gradient(170deg,var(--card2),var(--card));overflow:hidden;position:relative}
 .board::before{content:"";position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(80% 120% at 90% -20%,var(--voltglow),transparent 50%);opacity:.5}
-.bd-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;
-  padding:18px 20px 4px;position:relative}
-.ex-eyebrow{font-family:var(--h);font-size:11px;font-weight:600;letter-spacing:.26em;
-  text-transform:uppercase;color:var(--faint)}
-.ex-name{font-family:var(--h);font-weight:700;font-size:30px;line-height:1.02;
-  letter-spacing:.01em;color:var(--ink);margin-top:2px;display:flex;align-items:center;gap:10px}
+.bd-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:18px 20px 4px;position:relative}
+.ex-eyebrow{font-family:var(--h);font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--faint)}
+.ex-name{font-family:var(--h);font-weight:700;font-size:30px;line-height:1.02;letter-spacing:.01em;color:var(--ink);
+  margin-top:2px;display:flex;align-items:center;gap:10px}
 .ex-edit{font-size:0;color:var(--faint);cursor:pointer;padding:4px;border-radius:8px}
 .ex-edit svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .ex-edit:hover{color:var(--volt)}
-.pbwrap{text-align:right;flex-shrink:0}
-.pb-lab{font-family:var(--h);font-size:10px;font-weight:700;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--amber);display:flex;align-items:center;gap:5px;justify-content:flex-end}
+.pbwrap{text-align:end;flex-shrink:0}
+.pb-lab{font-family:var(--h);font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--amber);display:flex;align-items:center;gap:5px;justify-content:flex-end}
 .pb-lab svg{width:13px;height:13px;fill:var(--amber);stroke:none}
-.pb-val{font-family:var(--d);font-size:62px;line-height:.78;color:var(--amber);
-  text-shadow:0 0 26px var(--amberglow);letter-spacing:.01em}
-.pb-val small{font-family:var(--h);font-size:15px;font-weight:600;letter-spacing:.08em;
-  color:var(--amber2);text-shadow:none;margin-left:3px}
+.pb-val{font-family:var(--d);font-size:62px;line-height:.78;color:var(--amber);text-shadow:0 0 26px var(--amberglow);letter-spacing:.01em;direction:ltr}
+.pb-val small{font-family:var(--h);font-size:15px;font-weight:600;letter-spacing:.08em;color:var(--amber2);text-shadow:none;margin-left:3px}
 .pb-val.empty{color:var(--faint);text-shadow:none}
-
-/* sub stats */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-  background:var(--line2);border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);
-  margin-top:14px;position:relative}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line2);
+  border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);margin-top:14px;position:relative}
 .stat{background:var(--card);padding:11px 16px;text-align:center}
-.stat .v{font-family:var(--d);font-size:27px;line-height:.85;color:var(--ink);letter-spacing:.02em}
+.stat .v{font-family:var(--d);font-size:27px;line-height:.85;color:var(--ink);letter-spacing:.02em;direction:ltr}
 .stat .v small{font-family:var(--h);font-size:11px;color:var(--muted);font-weight:600;margin-left:2px}
-.stat .l{font-family:var(--h);font-size:10px;font-weight:600;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--faint);margin-top:5px}
+.stat .l{font-family:var(--h);font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-top:5px}
 
-/* ── Chart ──────────────────────────────── */
 .chart-box{padding:8px 8px 4px;position:relative}
 .chart-box svg{display:block;width:100%;height:auto}
 .cv-line{fill:none;stroke:var(--volt);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
@@ -114,14 +92,11 @@ body{
 .cv-flag{font-family:var(--h);font-weight:700;font-size:17px;fill:var(--amber);letter-spacing:.1em}
 .cv-vlab{font-family:var(--d);font-size:21px;letter-spacing:.02em}
 .hit{fill:transparent;cursor:pointer}
-.tip{position:absolute;pointer-events:none;background:#0a0d0a;border:1px solid var(--line);
-  border-radius:9px;padding:6px 10px;font-family:var(--h);font-weight:600;color:var(--ink);
-  font-size:13px;letter-spacing:.03em;transform:translate(-50%,-128%);opacity:0;transition:opacity .12s;
-  white-space:nowrap;z-index:5;box-shadow:0 8px 24px -10px #000}
+.tip{position:absolute;pointer-events:none;background:#0a0d0a;border:1px solid var(--line);border-radius:9px;
+  padding:6px 10px;font-family:var(--h);font-weight:600;color:var(--ink);font-size:13px;letter-spacing:.03em;
+  transform:translate(-50%,-128%);opacity:0;transition:opacity .12s;white-space:nowrap;z-index:5;box-shadow:0 8px 24px -10px #000}
 .tip b{color:var(--volt)}.tip span{color:var(--muted);font-weight:500;margin-left:6px}
 .tip.pb b{color:var(--amber)}
-
-/* draw animation */
 @keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
 @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.35)}100%{transform:scale(1)}}
@@ -130,155 +105,132 @@ body{
 .go .cv-area{animation:rise .9s .2s both}
 .cv-pulse{animation:pulse 2.4s ease-out infinite}
 
-/* ── Log input ──────────────────────────── */
 .logrow{display:flex;gap:9px;margin-top:14px}
-.logfield{flex:1;display:flex;align-items:center;border:1px solid var(--line2);
-  border-radius:14px;background:var(--card);overflow:hidden;transition:.16s}
+.logfield{flex:1;display:flex;align-items:center;border:1px solid var(--line2);border-radius:14px;background:var(--card);overflow:hidden;transition:.16s}
 .logfield:focus-within{border-color:var(--volt);box-shadow:0 0 0 3px var(--voltglow)}
 .logfield input{flex:1;min-width:0;background:none;border:none;outline:none;color:var(--ink);
-  font-family:var(--d);font-size:30px;letter-spacing:.02em;padding:8px 0 8px 16px}
+  font-family:var(--d);font-size:30px;letter-spacing:.02em;padding:8px 0 8px 16px;direction:ltr;text-align:start}
 .logfield input::placeholder{color:var(--faint)}
-.logfield .un{font-family:var(--h);font-weight:600;font-size:13px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--muted);padding:0 16px 0 8px;white-space:nowrap}
-.addbtn{border:none;border-radius:14px;background:var(--volt);color:#10140f;cursor:pointer;
-  font-family:var(--h);font-weight:700;font-size:15px;letter-spacing:.12em;text-transform:uppercase;
-  padding:0 22px;box-shadow:0 0 0 1px var(--volt2);transition:.16s}
+.logfield .un{font-family:var(--h);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:0 16px 0 8px;white-space:nowrap}
+.addbtn{border:none;border-radius:14px;background:var(--volt);color:#10140f;cursor:pointer;font-family:var(--h);
+  font-weight:700;font-size:15px;letter-spacing:.12em;text-transform:uppercase;padding:0 22px;box-shadow:0 0 0 1px var(--volt2);transition:.16s}
 .addbtn:hover{background:#d8ff5c;transform:translateY(-1px)}
 .addbtn:active{transform:scale(.97)}
 .addbtn:disabled{opacity:.4;cursor:not-allowed;transform:none}
 
-/* ── Exercise chips ─────────────────────── */
-.sec-lab{font-family:var(--h);font-size:11px;font-weight:600;letter-spacing:.22em;
-  text-transform:uppercase;color:var(--faint);margin:26px 2px 11px;display:flex;
-  align-items:center;justify-content:space-between}
-.sec-lab .hint{color:var(--muted);font-weight:500;letter-spacing:.04em;text-transform:none;font-size:11px}
+.sec-lab{font-family:var(--h);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--faint);margin:26px 2px 11px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.sec-lab .hint{color:var(--muted);font-weight:500;letter-spacing:.04em;text-transform:none;font-size:11px;text-align:end}
 .chips{display:flex;gap:9px;overflow-x:auto;padding:2px 2px 8px;scrollbar-width:none;-ms-overflow-style:none}
 .chips::-webkit-scrollbar{display:none}
-.chip{flex-shrink:0;border:1px solid var(--line2);background:var(--card);border-radius:13px;
-  padding:10px 15px;cursor:pointer;transition:.16s;min-width:84px;text-align:left}
-.chip .cn{font-family:var(--h);font-weight:600;font-size:15px;letter-spacing:.02em;color:var(--ink);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px}
-.chip .cm{font-family:var(--d);font-size:18px;color:var(--muted);margin-top:1px;letter-spacing:.03em}
+.chip{flex-shrink:0;border:1px solid var(--line2);background:var(--card);border-radius:13px;padding:10px 15px;cursor:pointer;transition:.16s;min-width:84px;text-align:start}
+.chip .cn{font-family:var(--h);font-weight:600;font-size:15px;letter-spacing:.02em;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px}
+.chip .cm{font-family:var(--d);font-size:18px;color:var(--muted);margin-top:1px;letter-spacing:.03em;direction:ltr;text-align:start}
 .chip .cm small{font-family:var(--h);font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
 .chip:hover{border-color:var(--line);transform:translateY(-2px)}
-.chip.on{border-color:var(--volt);background:linear-gradient(165deg,rgba(202,255,63,.1),var(--card));
-  box-shadow:0 0 0 1px var(--volt),0 8px 22px -12px var(--voltglow)}
+.chip.on{border-color:var(--volt);background:linear-gradient(165deg,rgba(202,255,63,.1),var(--card));box-shadow:0 0 0 1px var(--volt),0 8px 22px -12px var(--voltglow)}
 .chip.on .cm{color:var(--volt)}
-.chip.add{display:flex;align-items:center;justify-content:center;min-width:52px;color:var(--volt);
-  border-style:dashed;border-color:var(--line)}
+.chip.add{display:flex;align-items:center;justify-content:center;min-width:52px;color:var(--volt);border-style:dashed;border-color:var(--line)}
 .chip.add svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
 .chip.add:hover{background:rgba(202,255,63,.07)}
 
-/* ── History ────────────────────────────── */
 .hist{display:flex;flex-direction:column;gap:7px}
-.hrow{display:flex;align-items:center;gap:13px;padding:12px 15px;border:1px solid var(--line2);
-  border-radius:13px;background:var(--card);animation:rise .35s both}
-.hrow .hv{font-family:var(--d);font-size:27px;line-height:.8;letter-spacing:.02em;color:var(--ink);min-width:54px}
+.hrow{display:flex;align-items:center;gap:13px;padding:12px 15px;border:1px solid var(--line2);border-radius:13px;background:var(--card);animation:rise .35s both}
+.hrow .hv{font-family:var(--d);font-size:27px;line-height:.8;letter-spacing:.02em;color:var(--ink);min-width:54px;direction:ltr;text-align:start}
 .hrow .hv small{font-family:var(--h);font-size:11px;color:var(--muted);font-weight:600;margin-left:2px}
 .hrow.best{border-color:rgba(255,194,51,.4);background:linear-gradient(120deg,rgba(255,194,51,.08),var(--card))}
 .hrow.best .hv{color:var(--amber)}
 .hrow .hmid{flex:1;min-width:0}
 .hrow .hd{font-family:var(--h);font-weight:600;font-size:13px;letter-spacing:.06em;color:var(--muted)}
 .hrow .hn{font-size:12.5px;color:var(--faint);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.hbadge{font-family:var(--h);font-weight:700;font-size:9px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--amber);border:1px solid rgba(255,194,51,.4);border-radius:6px;padding:3px 7px;display:flex;align-items:center;gap:4px}
+.hbadge{font-family:var(--h);font-weight:700;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);
+  border:1px solid rgba(255,194,51,.4);border-radius:6px;padding:3px 7px;display:flex;align-items:center;gap:4px;white-space:nowrap}
 .hbadge svg{width:10px;height:10px;fill:var(--amber);stroke:none}
 .hdel{color:var(--faint);cursor:pointer;padding:6px;border-radius:8px;flex-shrink:0}
 .hdel svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .hdel:hover{color:var(--bad)}
-
-/* empty states */
 .empty{text-align:center;padding:30px 18px;color:var(--muted)}
 .empty .et{font-family:var(--h);font-weight:600;font-size:17px;letter-spacing:.04em;color:var(--ink)}
 .empty .es{font-size:13px;margin-top:5px;line-height:1.5}
 
-/* ── Creed / hadith ─────────────────────── */
-.creed{margin-top:34px;border:1px solid var(--line2);border-radius:20px;
-  background:linear-gradient(165deg,var(--card2),var(--card));padding:24px 22px 20px;position:relative;overflow:hidden}
-.creed::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--volt);opacity:.8}
+.creed{margin-top:34px;border:1px solid var(--line2);border-radius:20px;background:linear-gradient(165deg,var(--card2),var(--card));padding:24px 22px 22px;position:relative;overflow:hidden}
+.creed::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:3px;background:var(--volt);opacity:.8}
 .creed .ce{font-family:var(--h);font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--volt);margin-bottom:13px}
-.creed blockquote{margin:0;font-size:15.5px;line-height:1.62;color:#dfe7da}
-.creed blockquote em{color:var(--ink);font-style:normal;font-weight:500}
-.creed .strong{color:var(--volt);font-weight:600}
-.creed .src{margin-top:14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.creed .src a{font-family:var(--h);font-weight:600;font-size:12px;letter-spacing:.08em;color:var(--amber);
-  text-decoration:none;border-bottom:1px solid rgba(255,194,51,.35);padding-bottom:1px}
-.creed .src a:hover{color:#ffd066}
-.creed .src .ref{font-family:var(--h);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.creed .narr{font-size:13px;color:var(--faint);margin-bottom:9px;line-height:1.5}
+.creed blockquote{margin:0;font-size:15.5px;line-height:1.66;color:#dfe7da;font-weight:500}
+.creed .ref{font-family:var(--h);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:14px}
+.creed-btn{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-family:var(--h);font-weight:700;
+  font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#1a1405;background:var(--amber);
+  border:none;border-radius:12px;padding:12px 20px;text-decoration:none;cursor:pointer;transition:.16s;box-shadow:0 6px 22px -10px var(--amberglow)}
+.creed-btn:hover{background:#ffd066;transform:translateY(-1px)}
+.creed-btn svg{width:15px;height:15px;fill:none;stroke:#1a1405;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+html[lang="ar"] .creed blockquote{font-size:17px;line-height:1.95}
 
-.foot{text-align:center;margin-top:30px;font-family:var(--h);font-weight:600;font-size:11px;
-  letter-spacing:.34em;text-transform:uppercase;color:var(--faint)}
+.foot{text-align:center;margin-top:30px;font-family:var(--h);font-weight:600;font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--faint)}
 .foot b{color:var(--volt2)}
+html[lang="ar"] .foot{letter-spacing:.12em!important;font-size:13px}
 
-/* ── Modals ─────────────────────────────── */
-.scrim{position:fixed;inset:0;z-index:80;background:rgba(5,7,6,.78);display:none;
-  align-items:flex-end;justify-content:center;padding:0}
+.scrim{position:fixed;inset:0;z-index:80;background:rgba(5,7,6,.78);display:none;align-items:flex-end;justify-content:center;padding:0}
 .scrim.show{display:flex;animation:fade .2s}
 @keyframes fade{from{opacity:0}to{opacity:1}}
-.sheet{width:100%;max-width:520px;background:var(--bg2);border:1px solid var(--line2);
-  border-bottom:none;border-radius:22px 22px 0 0;padding:22px 22px calc(22px + env(safe-area-inset-bottom));
-  max-height:90vh;overflow-y:auto;animation:up .3s cubic-bezier(.2,.7,.2,1)}
+.sheet{width:100%;max-width:520px;background:var(--bg2);border:1px solid var(--line2);border-bottom:none;border-radius:22px 22px 0 0;
+  padding:22px 22px calc(22px + env(safe-area-inset-bottom));max-height:90vh;overflow-y:auto;animation:up .3s cubic-bezier(.2,.7,.2,1)}
 @keyframes up{from{transform:translateY(100%)}to{transform:none}}
 .sh-grab{width:38px;height:4px;border-radius:3px;background:var(--line2);margin:0 auto 16px}
 .sh-h{font-family:var(--h);font-weight:700;font-size:22px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);margin-bottom:4px}
 .sh-sub{font-size:13px;color:var(--muted);margin-bottom:18px;line-height:1.5}
-label.fl{display:block;font-family:var(--h);font-weight:600;font-size:11px;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--faint);margin:16px 0 7px}
-.inp{width:100%;background:var(--card);border:1px solid var(--line2);border-radius:12px;
-  color:var(--ink);font-family:var(--b);font-size:16px;padding:13px 15px;outline:none;transition:.16s}
+label.fl{display:block;font-family:var(--h);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:16px 0 7px}
+.inp{width:100%;background:var(--card);border:1px solid var(--line2);border-radius:12px;color:var(--ink);font-family:var(--b);font-size:16px;padding:13px 15px;outline:none;transition:.16s}
 .inp:focus{border-color:var(--volt);box-shadow:0 0 0 3px var(--voltglow)}
 .seg{display:flex;flex-wrap:wrap;gap:7px}
-.seg button{flex:1;min-width:62px;font-family:var(--h);font-weight:600;font-size:13px;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--muted);background:var(--card);border:1px solid var(--line2);
-  border-radius:11px;padding:11px 6px;cursor:pointer;transition:.14s}
+.seg button{flex:1;min-width:62px;font-family:var(--h);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);background:var(--card);border:1px solid var(--line2);border-radius:11px;padding:11px 6px;cursor:pointer;transition:.14s}
 .seg button.on{color:#10140f;background:var(--volt);border-color:var(--volt)}
 .seg button:hover:not(.on){border-color:var(--line);color:var(--ink)}
 .sh-actions{display:flex;gap:10px;margin-top:24px}
-.btn{flex:1;font-family:var(--h);font-weight:700;font-size:15px;letter-spacing:.1em;text-transform:uppercase;
-  padding:14px;border-radius:13px;cursor:pointer;border:1px solid var(--line2);background:var(--card);color:var(--ink);transition:.16s}
+.btn{flex:1;font-family:var(--h);font-weight:700;font-size:15px;letter-spacing:.1em;text-transform:uppercase;padding:14px;border-radius:13px;cursor:pointer;border:1px solid var(--line2);background:var(--card);color:var(--ink);transition:.16s}
 .btn:hover{border-color:var(--line)}
 .btn.go{background:var(--volt);color:#10140f;border:none;box-shadow:0 0 0 1px var(--volt2)}
 .btn.go:hover{background:#d8ff5c}
 .btn.danger{color:var(--bad);border-color:rgba(255,111,97,.3)}
 .btn.danger:hover{background:rgba(255,111,97,.1)}
-.note{font-size:12px;color:var(--faint);margin-top:14px;line-height:1.5;text-align:center}
+.note{font-size:12px;color:var(--faint);margin-top:14px;line-height:1.55;text-align:center}
+.lang-opts{display:flex;flex-direction:column;gap:9px;margin-top:6px}
+.lang-opt{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 18px;border:1px solid var(--line2);border-radius:13px;background:var(--card);cursor:pointer;transition:.14s}
+.lang-opt .lo-n{font-family:var(--h);font-weight:600;font-size:18px;letter-spacing:.02em;color:var(--ink)}
+.lang-opt .lo-s{font-size:12px;color:var(--muted)}
+.lang-opt:hover{border-color:var(--line)}
+.lang-opt.on{border-color:var(--volt);background:linear-gradient(165deg,rgba(202,255,63,.1),var(--card))}
+.lang-opt .lo-ck{color:var(--volt);opacity:0}
+.lang-opt.on .lo-ck{opacity:1}
+.lang-opt .lo-ck svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 
-/* warm-up list */
 .wu-list{display:flex;flex-direction:column;gap:8px;margin-top:4px}
-.wu-it{display:flex;align-items:center;gap:13px;padding:13px 15px;border:1px solid var(--line2);
-  border-radius:13px;background:var(--card)}
+.wu-it{display:flex;align-items:center;gap:13px;padding:13px 15px;border:1px solid var(--line2);border-radius:13px;background:var(--card)}
 .wu-it .wn{font-family:var(--d);font-size:22px;color:var(--volt);min-width:30px;letter-spacing:.02em}
 .wu-it .wmid{flex:1}
 .wu-it .wt{font-family:var(--h);font-weight:600;font-size:16px;letter-spacing:.02em;color:var(--ink)}
 .wu-it .wc{font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.4}
-.wu-it .wdur{font-family:var(--d);font-size:20px;color:var(--muted);letter-spacing:.03em}
+.wu-it .wdur{font-family:var(--d);font-size:20px;color:var(--muted);letter-spacing:.03em;direction:ltr}
 
-/* warm-up player */
-.player{position:fixed;inset:0;z-index:90;background:var(--bg);display:none;
-  flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;
+.player{position:fixed;inset:0;z-index:90;background:var(--bg);display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;
   background-image:radial-gradient(80% 60% at 50% 0%,rgba(202,255,63,.1),transparent 60%)}
 .player.show{display:flex}
 .pl-step{font-family:var(--h);font-weight:600;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint)}
-.pl-name{font-family:var(--h);font-weight:700;font-size:clamp(34px,9vw,58px);line-height:1.04;
-  letter-spacing:.01em;color:var(--ink);margin:14px 0 4px;max-width:90vw}
-.pl-cue{font-size:15px;color:var(--muted);max-width:420px;line-height:1.5;min-height:44px}
-.pl-time{font-family:var(--d);font-size:clamp(96px,30vw,180px);line-height:.8;color:var(--volt);
-  text-shadow:0 0 50px var(--voltglow);margin:22px 0 8px;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.pl-name{font-family:var(--h);font-weight:700;font-size:clamp(34px,9vw,58px);line-height:1.04;letter-spacing:.01em;color:var(--ink);margin:14px 0 4px;max-width:92vw}
+.pl-cue{font-size:15px;color:var(--muted);max-width:440px;line-height:1.55;min-height:46px}
+.pl-time{font-family:var(--d);font-size:clamp(96px,30vw,180px);line-height:.8;color:var(--volt);text-shadow:0 0 50px var(--voltglow);margin:22px 0 8px;letter-spacing:.02em;font-variant-numeric:tabular-nums;direction:ltr}
 .pl-time.rest{color:var(--amber);text-shadow:0 0 50px var(--amberglow)}
 .pl-next{font-family:var(--h);font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);min-height:18px}
 .pl-bar{width:min(420px,80vw);height:5px;border-radius:3px;background:var(--line2);overflow:hidden;margin:26px 0}
 .pl-bar i{display:block;height:100%;background:var(--volt);width:0;transition:width .25s linear}
 .pl-ctrls{display:flex;gap:12px}
-.pl-ctrls button{font-family:var(--h);font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;
-  padding:13px 22px;border-radius:12px;cursor:pointer;border:1px solid var(--line2);background:var(--card);color:var(--ink)}
+.pl-ctrls button{font-family:var(--h);font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;padding:13px 22px;border-radius:12px;cursor:pointer;border:1px solid var(--line2);background:var(--card);color:var(--ink)}
 .pl-ctrls button.main{background:var(--volt);color:#10140f;border:none}
 .pl-ctrls button:hover{border-color:var(--line)}
 
-/* toast */
-.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);z-index:95;
-  background:#0a0d0a;border:1px solid var(--volt);border-radius:13px;padding:12px 18px;
-  display:flex;align-items:center;gap:10px;opacity:0;transition:.3s;pointer-events:none;
-  box-shadow:0 12px 40px -12px var(--voltglow);max-width:90vw}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);z-index:95;background:#0a0d0a;border:1px solid var(--volt);border-radius:13px;padding:12px 18px;
+  display:flex;align-items:center;gap:10px;opacity:0;transition:.3s;pointer-events:none;box-shadow:0 12px 40px -12px var(--voltglow);max-width:90vw}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast.pb{border-color:var(--amber);box-shadow:0 12px 40px -12px var(--amberglow)}
 .toast .ti{font-family:var(--d);font-size:26px;color:var(--volt);letter-spacing:.02em}
@@ -286,527 +238,566 @@ label.fl{display:block;font-family:var(--h);font-weight:600;font-size:11px;lette
 .toast .tt{font-family:var(--h);font-weight:600;font-size:14px;letter-spacing:.04em;color:var(--ink)}
 .toast .tt b{display:block;font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:1px}
 
+.hadith-bar{display:flex;align-items:center;gap:14px;width:100%;margin-top:2px;padding:14px 18px;
+  border:1px solid rgba(255,194,51,.26);border-radius:16px;text-decoration:none;transition:.18s;
+  background:linear-gradient(110deg,rgba(255,194,51,.12),rgba(255,194,51,.03) 60%,transparent);animation:rise .5s both}
+.hadith-bar:hover{border-color:rgba(255,194,51,.5);transform:translateY(-1px);box-shadow:0 12px 34px -16px var(--amberglow)}
+.hadith-bar:active{transform:translateY(0)}
+.hb-ic{width:40px;height:40px;border-radius:12px;background:rgba(255,194,51,.13);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hb-ic svg{width:21px;height:21px;fill:none;stroke:var(--amber);stroke-width:1.85;stroke-linecap:round;stroke-linejoin:round}
+.hb-tx{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.hb-tx b{font-family:var(--h);font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);line-height:1}
+.hb-tx small{font-size:12.5px;color:var(--muted);line-height:1.2}
+.hb-arrow{color:var(--amber);font-size:21px;flex-shrink:0;transition:transform .18s;line-height:1}
+.hadith-bar:hover .hb-arrow{transform:translateX(3px)}
+html[dir="rtl"] .hadith-bar:hover .hb-arrow{transform:translateX(-3px)}
+html[lang="ar"] .hb-tx b{letter-spacing:0;font-size:17px}
+
 @media (max-width:560px){
   .wrap{padding:0 14px 110px}
-  .pb-val{font-size:54px}
-  .ex-name{font-size:25px}
-  .stat .v{font-size:23px}
-  .logfield input{font-size:26px}
-  .addbtn{padding:0 17px;font-size:14px}
-  .warm span{display:none}
-  .warm{padding:0;width:40px}
+  .pb-val{font-size:54px}.ex-name{font-size:25px}.stat .v{font-size:23px}
+  .logfield input{font-size:26px}.addbtn{padding:0 17px;font-size:14px}
+  .warm span{display:none}.warm{padding:0;width:40px}
 }
 </style>
 </head>
 <body>
 <div class="wrap">
-
-  <!-- Topbar -->
   <header class="top">
-    <div class="brand">
-      <div class="logo">QU<b>W</b>WA</div>
-    </div>
+    <div class="brand"><div class="logo">QU<b>W</b>WA</div></div>
     <div class="tbtns">
-      <button class="ic warm" onclick="openWarmup()" aria-label="Warm up" title="Warm up">
-        <svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg><span>Warm up</span>
+      <button class="ic" id="langBtn" onclick="openLang()" data-tt="lang" title="Language" aria-label="Language">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3c2.7 2.7 2.7 15.3 0 18M12 3c-2.7 2.7-2.7 15.3 0 18"/></svg>
       </button>
-      <button class="ic" id="menuBtn" onclick="openMenu()" aria-label="Data & menu" title="Backup, restore & info">
+      <button class="ic warm" onclick="openWarmup()" data-tt="warmUp" title="Warm up" aria-label="Warm up">
+        <svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg><span data-t="warmUp">Warm up</span>
+      </button>
+      <button class="ic" id="menuBtn" onclick="openMenu()" data-tt="dataMenu" title="Backup & info" aria-label="Data menu">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="12" cy="19" r="1.4"/></svg>
       </button>
     </div>
   </header>
 
-  <!-- Scoreboard -->
+  <a class="hadith-bar" id="hadithBar" href="#" target="_blank" rel="noopener">
+    <span class="hb-ic"><svg viewBox="0 0 24 24"><path d="M12 7v13M12 7a4 4 0 0 0-4-3H3v13h5a4 4 0 0 1 4 2 4 4 0 0 1 4-2h5V4h-5a4 4 0 0 0-4 3z"/></svg></span>
+    <span class="hb-tx"><b data-t="creedEyebrow">The Strong Believer</b><small data-t="readHadith">Read the full hadith</small></span>
+    <span class="hb-arrow" id="hbArrow">→</span>
+  </a>
+
   <section class="board" id="board">
     <div class="bd-head">
       <div>
-        <div class="ex-eyebrow">Current exercise</div>
+        <div class="ex-eyebrow" data-t="currentExercise">Current exercise</div>
         <div class="ex-name"><span id="exName">—</span>
-          <span class="ex-edit" onclick="editExercise()" title="Edit exercise"><svg viewBox="0 0 24 24"><path d="M14 4l6 6M4 20l1-5L16 4l4 4L9 19l-5 1z"/></svg></span>
+          <span class="ex-edit" onclick="editExercise()" data-tt="editEx" title="Edit exercise"><svg viewBox="0 0 24 24"><path d="M14 4l6 6M4 20l1-5L16 4l4 4L9 19l-5 1z"/></svg></span>
         </div>
       </div>
       <div class="pbwrap">
-        <div class="pb-lab"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.9 1.2 7L12 17.8 5.8 21l1.2-7-5-4.9 7.1-.9z"/></svg>Personal best</div>
+        <div class="pb-lab"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.9 1.2 7L12 17.8 5.8 21l1.2-7-5-4.9 7.1-.9z"/></svg><span data-t="personalBest">Personal best</span></div>
         <div class="pb-val empty" id="pbVal">—</div>
       </div>
     </div>
     <div class="stats">
-      <div class="stat"><div class="v" id="stLast">—</div><div class="l">Last</div></div>
-      <div class="stat"><div class="v" id="stSessions">0</div><div class="l">Sessions</div></div>
-      <div class="stat"><div class="v" id="stAvg">—</div><div class="l">Average</div></div>
+      <div class="stat"><div class="v" id="stLast">—</div><div class="l" data-t="last">Last</div></div>
+      <div class="stat"><div class="v" id="stSessions">0</div><div class="l" data-t="sessions">Sessions</div></div>
+      <div class="stat"><div class="v" id="stAvg">—</div><div class="l" data-t="average">Average</div></div>
     </div>
-    <div class="chart-box">
-      <div id="chart"></div>
-      <div class="tip" id="tip"></div>
-    </div>
+    <div class="chart-box"><div id="chart"></div><div class="tip" id="tip"></div></div>
   </section>
 
-  <!-- Log input -->
   <div class="logrow">
     <div class="logfield">
       <input id="logInput" type="number" inputmode="decimal" placeholder="0" min="0" step="any"
         onkeydown="if(event.key==='Enter')addLog()" oninput="syncAdd()">
       <span class="un" id="logUnit">REPS</span>
     </div>
-    <button class="addbtn" id="addBtn" onclick="addLog()" disabled>Log set</button>
+    <button class="addbtn" id="addBtn" onclick="addLog()" data-t="logSet" disabled>Log set</button>
   </div>
 
-  <!-- Exercises -->
-  <div class="sec-lab">Exercises <span class="hint">tap to switch · hold the chart points to read</span></div>
+  <div class="sec-lab"><span data-t="exercises">Exercises</span><span class="hint" data-t="exercisesHint">tap to switch</span></div>
   <div class="chips" id="chips"></div>
 
-  <!-- History -->
   <div class="sec-lab" id="histLab">History</div>
   <div class="hist" id="hist"></div>
 
-  <!-- Creed -->
-  <section class="creed">
-    <div class="ce">The Strong Believer</div>
-    <blockquote>
-      Abū Hurayrah <span style="color:var(--faint)">(may Allah be pleased with him)</span> reported that the Messenger of Allah ﷺ said:
-      <em> “The <span class="strong">strong believer is better and dearer to Allah</span> than the weak believer, and there is good in both. Adhere to whatever brings you benefit, seek the help of Allah, and do not feel helpless. If something befalls you, do not say: ‘Had I done such-and-such, it would have been such-and-such;’ rather, say: ‘Allah has decreed, and whatever He wills, He does.’ Indeed, ‘if’ opens the way before the devil to act.”</em>
-    </blockquote>
-    <div class="src">
-      <span class="ref">Reported by Muslim</span>
-      <a href="https://hadeethenc.com/en/browse/hadith/5493" target="_blank" rel="noopener">Read the takhrīj →</a>
-    </div>
-  </section>
-
-  <div class="foot">Train · <b>Pray</b> · Repeat</div>
+  <div class="foot" id="foot"></div>
 </div>
 
-<!-- ── Add / Edit exercise sheet ── -->
+<!-- Add / Edit exercise -->
 <div class="scrim" id="exScrim" onclick="if(event.target===this)closeSheets()">
   <div class="sheet">
     <div class="sh-grab"></div>
-    <div class="sh-h" id="exSheetH">New exercise</div>
-    <div class="sh-sub">Track anything — bodyweight reps, a lift in kilos, a plank in seconds, a run in kilometres.</div>
-    <label class="fl">Name</label>
-    <input class="inp" id="exInput" maxlength="40" placeholder="e.g. Push-ups, Bench press, Plank" autocomplete="off">
-    <label class="fl">Unit</label>
+    <div class="sh-h" id="exSheetH" data-t="newEx">New exercise</div>
+    <div class="sh-sub" data-t="exSub">Track anything — bodyweight reps, a lift in kilos, a plank in seconds, a run in kilometres.</div>
+    <label class="fl" data-t="nameL">Name</label>
+    <input class="inp" id="exInput" maxlength="40" data-tp="nameP" placeholder="e.g. Push-ups" autocomplete="off">
+    <label class="fl" data-t="unitL">Unit</label>
     <div class="seg" id="unitSeg"></div>
-    <label class="fl">Your best is the…</label>
+    <label class="fl" data-t="bestIsL">Your best is the…</label>
     <div class="seg" id="dirSeg">
-      <button data-dir="up" class="on">Highest value</button>
-      <button data-dir="down">Lowest value</button>
+      <button data-dir="up" class="on" data-t="highest">Highest value</button>
+      <button data-dir="down" data-t="lowest">Lowest value</button>
     </div>
     <div class="sh-actions">
-      <button class="btn danger" id="exDelBtn" onclick="deleteExercise()" style="display:none">Delete</button>
-      <button class="btn go" onclick="saveExercise()">Save</button>
+      <button class="btn danger" id="exDelBtn" onclick="deleteExercise()" data-t="del" style="display:none">Delete</button>
+      <button class="btn go" onclick="saveExercise()" data-t="save">Save</button>
     </div>
   </div>
 </div>
 
-<!-- ── Warm-up sheet ── -->
+<!-- Warm-up list -->
 <div class="scrim" id="wuScrim" onclick="if(event.target===this)closeSheets()">
   <div class="sheet">
     <div class="sh-grab"></div>
-    <div class="sh-h">Warm up</div>
-    <div class="sh-sub">A six-minute dynamic warm-up — raise the heart rate, open the joints, prime the muscles. Move with control, breathe steady.</div>
+    <div class="sh-h" data-t="warmUp">Warm up</div>
+    <div class="sh-sub" data-t="warmSub">A six-minute dynamic warm-up.</div>
     <div class="wu-list" id="wuList"></div>
     <div class="sh-actions">
-      <button class="btn" onclick="closeSheets()">Close</button>
-      <button class="btn go" onclick="startWarmup()">Start guided ▶</button>
+      <button class="btn" onclick="closeSheets()" data-t="close">Close</button>
+      <button class="btn go" onclick="startWarmup()" data-t="startGuided">Start guided ▶</button>
     </div>
   </div>
 </div>
 
-<!-- ── Menu sheet ── -->
+<!-- Menu -->
 <div class="scrim" id="menuScrim" onclick="if(event.target===this)closeSheets()">
   <div class="sheet">
     <div class="sh-grab"></div>
-    <div class="sh-h">Your data</div>
-    <div class="sh-sub">Everything is stored privately on this device. Keep a backup, or move it to another device.</div>
+    <div class="sh-h" data-t="yourData">Your data</div>
+    <div class="sh-sub" data-t="dataSub">Everything is stored privately on this device.</div>
     <div class="sh-actions" style="flex-direction:column">
-      <button class="btn go" onclick="exportData()">⇣ Export backup</button>
-      <button class="btn" onclick="document.getElementById('importFile').click()">⇡ Import backup</button>
-      <button class="btn" onclick="closeSheets();setTimeout(startTut,280)">↻ Replay the tour</button>
+      <button class="btn go" onclick="exportData()" data-t="exportBackup">Export backup</button>
+      <button class="btn" onclick="document.getElementById('importFile').click()" data-t="importBackup">Import backup</button>
     </div>
     <input type="file" id="importFile" accept="application/json,.json" style="display:none" onchange="importData(event)">
-    <div class="note">Built on the hadith of the strong believer. Train your body as an amānah, and let it serve your worship. May Allah make you strong upon His obedience.</div>
-    <div class="sh-actions">
-      <button class="btn danger" onclick="resetAll()">Reset everything</button>
-    </div>
+    <div class="note" data-t="dataNote">Built on the hadith of the strong believer.</div>
+    <div class="sh-actions"><button class="btn danger" onclick="resetAll()" data-t="resetEverything">Reset everything</button></div>
   </div>
 </div>
 
-<!-- ── Warm-up player ── -->
+<!-- Language -->
+<div class="scrim" id="langScrim" onclick="if(event.target===this)closeSheets()">
+  <div class="sheet">
+    <div class="sh-grab"></div>
+    <div class="sh-h" data-t="lang">Language</div>
+    <div class="lang-opts" id="langOpts"></div>
+  </div>
+</div>
+
+<!-- Warm-up player -->
 <div class="player" id="player">
-  <div class="pl-step" id="plStep">Move 1 of 10</div>
-  <div class="pl-name" id="plName">Get ready</div>
+  <div class="pl-step" id="plStep"></div>
+  <div class="pl-name" id="plName"></div>
   <div class="pl-cue" id="plCue"></div>
-  <div class="pl-time" id="plTime">3</div>
+  <div class="pl-time" id="plTime">0</div>
   <div class="pl-bar"><i id="plBar"></i></div>
   <div class="pl-next" id="plNext"></div>
   <div class="pl-ctrls">
-    <button onclick="stopWarmup()">Quit</button>
+    <button onclick="stopWarmup()" id="plQuit">Quit</button>
     <button class="main" id="plPause" onclick="togglePause()">Pause</button>
-    <button onclick="skipMove()">Skip</button>
+    <button onclick="skipMove()" id="plSkip">Skip</button>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-/* ════════════════════════════════════════════════════════════
-   QUWWA — strength log.  Single file, offline, localStorage.
-   ════════════════════════════════════════════════════════════ */
-const KEY='quwwa_v1';
+/* ════════ i18n ════════ */
+const WDUR=[60,30,30,30,30,40,40,40,30,30];
+const UN={reps:{en:'REPS',de:'WDH',ar:'تكرار'},kg:{en:'KG',de:'KG',ar:'كغ'},sec:{en:'SEC',de:'SEK',ar:'ث'},min:{en:'MIN',de:'MIN',ar:'د'},km:{en:'KM',de:'KM',ar:'كم'}};
 const UNITS=['reps','kg','sec','min','km'];
-const UNAME={reps:'REPS',kg:'KG',sec:'SEC',min:'MIN',km:'KM'};
-let DB=null, sel=null;
-let exEditId=null, unitPick='reps', dirPick='up';
 
-/* ── storage ── */
+const LANG={
+ en:{
+  name:'English', lang:'Language', warmUp:'Warm up', dataMenu:'Backup, restore & info', editEx:'Edit exercise',
+  currentExercise:'Current exercise', personalBest:'Personal best', noExercise:'No exercise yet',
+  addFirst:'Add your first exercise', addFirstSub:'— tap the + below, or here, to begin —',
+  last:'Last', sessions:'Sessions', average:'Average', logSet:'Log set', exercises:'Exercises',
+  exercisesHint:'tap to switch · hold the points to read', history:'History',
+  noSets:'No sets yet', noSetsSub:'Log your reps after each session and watch the curve climb.',
+  noExHistSub:'Add an exercise above to start logging your sets.',
+  emptyT:'Log your first set', emptyS:'— your strength curve will rise here —', best:'Best',
+  creedEyebrow:'The Strong Believer', reportedBy:'Reported by Muslim', readHadith:'Read the full hadith',
+  foot:'Train · <b>Pray</b> · Repeat',
+  newEx:'New exercise', editExH:'Edit exercise',
+  exSub:'Track anything — bodyweight reps, a lift in kilos, a plank in seconds, a run in kilometres.',
+  nameL:'Name', nameP:'e.g. Push-ups, Bench press, Plank', unitL:'Unit', bestIsL:'Your best is the…',
+  highest:'Highest value', lowest:'Lowest value', del:'Delete', save:'Save', close:'Close',
+  warmSub:'A six-minute dynamic warm-up — raise the heart rate, open the joints, prime the muscles. Move with control, breathe steady.',
+  startGuided:'Start guided ▶', yourData:'Your data', dataSub:'Everything is stored privately on this device. Keep a backup, or move it to another device.',
+  exportBackup:'⇣ Export backup', importBackup:'⇡ Import backup',
+  dataNote:'Built on the hadith of the strong believer. Train your body as an amānah, and let it serve your worship. May Allah make you strong upon His obedience.',
+  resetEverything:'Reset everything',
+  moveOf:'Move # of @', warmDoneT:'Warm-up done', warmDoneC:'Body primed. Now train hard, with the intention of strength for His obedience.',
+  nextLbl:'Next · ', finalMove:'Final move', quit:'Quit', pause:'Pause', resume:'Resume', skip:'Skip',
+  back:'Back', next:'Next', begin:'Begin', skipT:'Skip',
+  tLogged:'Logged', tPB:'New personal best!', tRestored:'Restored',
+  confDelSet:'Delete this set?', confDelEx:'Delete "#" and all its sets? This cannot be undone.',
+  confReset:'Reset everything? This permanently deletes every exercise and all your logged sets.\n\nTip: export a backup first.',
+  alertImport:'That file could not be read as a QUWWA backup.', alertRead:'Could not read the file.',
+  alertSave:'Could not save automatically in this browser. Open QUWWA in Safari or Chrome to export, in shaa ALLAH.',
+  had:{url:'https://hadeethenc.com/en/browse/hadith/5493'},
+  warm:[
+   {n:'March in place',c:'Easy pace, swing the arms — get the blood moving and the heart rate up.'},
+   {n:'Arm circles',c:'Big controlled circles forward, then reverse halfway through.'},
+   {n:'Shoulder & neck rolls',c:'Roll the shoulders back, then gentle side-to-side neck turns.'},
+   {n:'Torso twists',c:'Feet planted shoulder-width, rotate from the waist, arms loose.'},
+   {n:'Hip circles',c:'Hands on hips, draw big slow circles — each direction.'},
+   {n:'Leg swings',c:'Hold support. Swing each leg front-to-back, then across the body.'},
+   {n:'Bodyweight squats',c:'Slow and deep, chest up, knees tracking over the toes.'},
+   {n:'Walking lunges + reach',c:'Step, sink, reach overhead — open the hips and the chest.'},
+   {n:'Inchworms',c:'Hinge, walk the hands out to a plank, walk them back, stand tall.'},
+   {n:'High knees',c:'Quick and light, drive the knees up — finish strong.'}]
+ },
+ de:{
+  name:'Deutsch', lang:'Sprache', warmUp:'Aufwärmen', dataMenu:'Sichern, wiederherstellen & Info', editEx:'Übung bearbeiten',
+  currentExercise:'Aktuelle Übung', personalBest:'Persönliche Bestleistung', noExercise:'Noch keine Übung',
+  addFirst:'Füge deine erste Übung hinzu', addFirstSub:'— tippe unten auf das +, oder hier, um zu beginnen —',
+  last:'Letzte', sessions:'Einheiten', average:'Durchschnitt', logSet:'Eintragen', exercises:'Übungen',
+  exercisesHint:'tippen zum Wechseln · Punkte halten zum Ablesen', history:'Verlauf',
+  noSets:'Noch keine Sätze', noSetsSub:'Trage nach jeder Einheit deine Wiederholungen ein und sieh die Kurve steigen.',
+  noExHistSub:'Füge oben eine Übung hinzu, um deine Sätze einzutragen.',
+  emptyT:'Trage deinen ersten Satz ein', emptyS:'— hier steigt deine Kraftkurve —', best:'Bestwert',
+  creedEyebrow:'Der starke Gläubige', reportedBy:'Überliefert von Muslim', readHadith:'Den ganzen Hadith lesen',
+  foot:'Trainiere · <b>Bete</b> · Wiederhole',
+  newEx:'Neue Übung', editExH:'Übung bearbeiten',
+  exSub:'Verfolge alles — Eigengewicht-Wiederholungen, ein Gewicht in Kilo, eine Planke in Sekunden, einen Lauf in Kilometern.',
+  nameL:'Name', nameP:'z. B. Liegestütze, Bankdrücken, Planke', unitL:'Einheit', bestIsL:'Deine Bestleistung ist der…',
+  highest:'Höchste Wert', lowest:'Niedrigste Wert', del:'Löschen', save:'Speichern', close:'Schließen',
+  warmSub:'Ein sechsminütiges dynamisches Aufwärmen — Puls hoch, Gelenke öffnen, Muskeln vorbereiten. Bewege dich kontrolliert, atme ruhig.',
+  startGuided:'Geführt starten ▶', yourData:'Deine Daten', dataSub:'Alles wird privat auf diesem Gerät gespeichert. Erstelle eine Sicherung oder übertrage sie auf ein anderes Gerät.',
+  exportBackup:'⇣ Sicherung exportieren', importBackup:'⇡ Sicherung importieren',
+  dataNote:'Auf dem Hadith des starken Gläubigen gebaut. Trainiere deinen Körper als Amāna und lass ihn deiner Anbetung dienen. Möge Allah dich stark machen in Seinem Gehorsam.',
+  resetEverything:'Alles zurücksetzen',
+  moveOf:'Übung # von @', warmDoneT:'Aufwärmen fertig', warmDoneC:'Körper bereit. Trainiere jetzt hart, mit der Absicht der Kraft für Seinen Gehorsam.',
+  nextLbl:'Weiter · ', finalMove:'Letzte Übung', quit:'Beenden', pause:'Pause', resume:'Weiter', skip:'Überspringen',
+  back:'Zurück', next:'Weiter', begin:'Los geht’s', skipT:'Überspringen',
+  tLogged:'Eingetragen', tPB:'Neue Bestleistung!', tRestored:'Wiederhergestellt',
+  confDelSet:'Diesen Satz löschen?', confDelEx:'„#“ und alle Sätze löschen? Dies kann nicht rückgängig gemacht werden.',
+  confReset:'Alles zurücksetzen? Dies löscht dauerhaft jede Übung und alle eingetragenen Sätze.\n\nTipp: Exportiere zuerst eine Sicherung.',
+  alertImport:'Diese Datei konnte nicht als QUWWA-Sicherung gelesen werden.', alertRead:'Datei konnte nicht gelesen werden.',
+  alertSave:'Konnte in diesem Browser nicht automatisch speichern. Öffne QUWWA in Safari oder Chrome zum Exportieren, in shaa ALLAH.',
+  had:{url:'https://hadeethenc.com/de/browse/hadith/5493'},
+  warm:[
+   {n:'Marsch auf der Stelle',c:'Lockeres Tempo, Arme schwingen — bring den Kreislauf in Schwung und den Puls hoch.'},
+   {n:'Armkreisen',c:'Große kontrollierte Kreise vorwärts, dann zur Hälfte rückwärts.'},
+   {n:'Schulter- & Nackenkreisen',c:'Schultern nach hinten kreisen, dann sanfte Nackendrehungen.'},
+   {n:'Rumpfdrehungen',c:'Füße schulterbreit, aus der Taille drehen, Arme locker.'},
+   {n:'Hüftkreisen',c:'Hände an die Hüften, große langsame Kreise — in jede Richtung.'},
+   {n:'Beinschwünge',c:'Halt dich fest. Schwinge jedes Bein vor und zurück, dann seitlich.'},
+   {n:'Kniebeugen',c:'Langsam und tief, Brust raus, Knie über den Zehen.'},
+   {n:'Ausfallschritte + Strecken',c:'Schritt, absenken, nach oben strecken — Hüfte und Brust öffnen.'},
+   {n:'Raupengang',c:'Beugen, Hände bis zum Plank vorlaufen, zurücklaufen, aufrichten.'},
+   {n:'Knieheben',c:'Schnell und leicht, Knie hochziehen — stark beenden.'}]
+ },
+ ar:{
+  rtl:true, name:'العربية', lang:'اللغة', warmUp:'إحماء', dataMenu:'النسخ الاحتياطي والمعلومات', editEx:'تعديل التمرين',
+  currentExercise:'التمرين الحالي', personalBest:'أفضل رقم شخصي', noExercise:'لا يوجد تمرين بعد',
+  addFirst:'أضف تمرينك الأول', addFirstSub:'— اضغط على + بالأسفل أو هنا للبدء —',
+  last:'الأخيرة', sessions:'الجلسات', average:'المتوسط', logSet:'سجّل', exercises:'التمارين',
+  exercisesHint:'اضغط للتبديل · المس النقاط للقراءة', history:'السجل',
+  noSets:'لا توجد مجموعات بعد', noSetsSub:'سجّل تكراراتك بعد كل جلسة وشاهد المنحنى يرتفع.',
+  noExHistSub:'أضف تمرينًا بالأعلى لتبدأ تسجيل مجموعاتك.',
+  emptyT:'سجّل مجموعتك الأولى', emptyS:'— هنا سيرتفع منحنى قوتك —', best:'الأفضل',
+  creedEyebrow:'المؤمن القوي', reportedBy:'رواه مسلم', readHadith:'اقرأ الحديث كاملاً',
+  foot:'تدرّب · <b>صَلِّ</b> · كرّر',
+  newEx:'تمرين جديد', editExH:'تعديل التمرين',
+  exSub:'تتبّع أي شيء — تكرارات بوزن الجسم، رفعة بالكيلوغرام، بلانك بالثواني، جري بالكيلومترات.',
+  nameL:'الاسم', nameP:'مثال: ضغط، بنش، بلانك', unitL:'الوحدة', bestIsL:'أفضل نتيجة لك هي…',
+  highest:'الأعلى', lowest:'الأدنى', del:'حذف', save:'حفظ', close:'إغلاق',
+  warmSub:'إحماء ديناميكي لمدة ست دقائق — ارفع نبضك، حرّك مفاصلك، هيّئ عضلاتك. تحرّك بتحكّم وتنفّس بهدوء.',
+  startGuided:'ابدأ بإرشاد ▶', yourData:'بياناتك', dataSub:'كل شيء محفوظ بخصوصية على هذا الجهاز. احتفظ بنسخة احتياطية أو انقلها إلى جهاز آخر.',
+  exportBackup:'⇣ تصدير نسخة احتياطية', importBackup:'⇡ استيراد نسخة احتياطية',
+  dataNote:'مبني على حديث المؤمن القوي. درّب جسدك بوصفه أمانة، واجعله عونًا على عبادتك. جعلك الله قويًّا على طاعته.',
+  resetEverything:'إعادة ضبط الكل',
+  moveOf:'حركة # من @', warmDoneT:'انتهى الإحماء', warmDoneC:'الجسد جاهز. تدرّب الآن بجدّ، بنيّة القوة على طاعته.',
+  nextLbl:'التالي · ', finalMove:'الحركة الأخيرة', quit:'إنهاء', pause:'إيقاف', resume:'متابعة', skip:'تخطّي',
+  back:'السابق', next:'التالي', begin:'ابدأ', skipT:'تخطّي',
+  tLogged:'تم التسجيل', tPB:'رقم شخصي جديد!', tRestored:'تمت الاستعادة',
+  confDelSet:'حذف هذه المجموعة؟', confDelEx:'حذف «#» وكل مجموعاتها؟ لا يمكن التراجع عن هذا.',
+  confReset:'إعادة ضبط الكل؟ سيحذف هذا نهائيًا كل تمرين وكل المجموعات المسجلة.\n\nنصيحة: صدّر نسخة احتياطية أولًا.',
+  alertImport:'تعذّر قراءة هذا الملف كنسخة QUWWA احتياطية.', alertRead:'تعذّرت قراءة الملف.',
+  alertSave:'تعذّر الحفظ تلقائيًا في هذا المتصفح. افتح QUWWA في Safari أو Chrome للتصدير، إن شاء الله.',
+  had:{url:'https://hadeethenc.com/ar/browse/hadith/5493'},
+  warm:[
+   {n:'المشي في المكان',c:'بخطى هادئة، حرّك ذراعيك — نشّط الدورة الدموية وارفع النبض.'},
+   {n:'تدوير الذراعين',c:'دوائر كبيرة متحكَّم بها للأمام، ثم اعكس الاتجاه في المنتصف.'},
+   {n:'تدوير الكتفين والرقبة',c:'لفّ الكتفين للخلف، ثم أدر رقبتك بلطف يمينًا ويسارًا.'},
+   {n:'لفّ الجذع',c:'ثبّت قدميك بعرض الكتفين، ودر من الخصر والذراعان مرتخيتان.'},
+   {n:'تدوير الوركين',c:'يداك على وركيك، ارسم دوائر كبيرة بطيئة في كل اتجاه.'},
+   {n:'أرجحة الساقين',c:'استند إلى شيء. أرجِح كل ساق أمامًا وخلفًا، ثم أمام الجسم.'},
+   {n:'القرفصاء',c:'ببطء وعمق، صدرك مرفوع، وركبتاك فوق أصابع قدميك.'},
+   {n:'الطعنات مع المدّ',c:'اخطُ، انزل، ومدّ يديك للأعلى — افتح الوركين والصدر.'},
+   {n:'دودة القياس',c:'انحنِ، امشِ بيديك حتى وضع البلانك، ثم عُد وقف منتصبًا.'},
+   {n:'رفع الركبتين',c:'بسرعة وخفّة، ارفع ركبتيك — أنهِ بقوة.'}]
+ }
+};
+let cur='en';
+function t(k){return (LANG[cur]&&LANG[cur][k]!=null)?LANG[cur][k]:(LANG.en[k]!=null?LANG.en[k]:k);}
+function un(u){return UN[u][cur]||UN[u].en;}
+
+/* ════════ storage ════════ */
+const KEY='quwwa_v1', LKEY='quwwa_lang';
+let DB=null, sel=null, exEditId=null, unitPick='reps', dirPick='up';
 function load(){
-  try{const r=localStorage.getItem(KEY); if(r) DB=JSON.parse(r);}catch(e){}
-  if(!DB||!DB.ex){
-    DB={v:1,tutDone:false,ex:[],logs:{},sel:null};
-  }
+  try{const r=localStorage.getItem(KEY); if(r)DB=JSON.parse(r);}catch(e){}
+  if(!DB||!DB.ex){ DB={v:1,ex:[],logs:{},sel:null}; }
   sel=DB.sel||(DB.ex[0]&&DB.ex[0].id)||null;
+  try{const l=localStorage.getItem(LKEY); if(l&&LANG[l])cur=l;}catch(e){}
+  if(!localStorage.getItem(LKEY)){const n=(navigator.language||'en').slice(0,2); if(LANG[n])cur=n;}
 }
 function save(){try{localStorage.setItem(KEY,JSON.stringify(DB));}catch(e){}}
 function mk(name,unit,dir){return {id:'e'+Math.random().toString(36).slice(2,9),name:name,unit:unit,dir:dir||'up'};}
 function exById(id){return DB.ex.find(e=>e.id===id);}
 function logsOf(id){return DB.logs[id]||[];}
 function todayStr(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
-
-/* ── stats ── */
-function fmt(v){ if(v==null||isNaN(v))return '—'; return (Math.round(v*100)/100).toString(); }
+function fmt(v){if(v==null||isNaN(v))return '—';return (Math.round(v*100)/100).toString();}
 function bestVal(id){const e=exById(id),L=logsOf(id);if(!L.length)return null;const vs=L.map(l=>l.v);return e.dir==='down'?Math.min.apply(null,vs):Math.max.apply(null,vs);}
 function bestIdx(id){const b=bestVal(id);if(b==null)return -1;return logsOf(id).findIndex(l=>l.v===b);}
 
-/* ════ RENDER ════ */
-function render(){ renderChips(); renderBoard(); renderHistory(); }
+/* ════════ language apply ════════ */
+function applyLang(){
+  const isAr=cur==='ar';
+  document.documentElement.lang=cur;
+  document.documentElement.dir=isAr?'rtl':'ltr';
+  document.querySelectorAll('[data-t]').forEach(el=>{ el.innerHTML=t(el.getAttribute('data-t')); });
+  document.querySelectorAll('[data-tt]').forEach(el=>{ el.title=t(el.getAttribute('data-tt')); });
+  document.querySelectorAll('[data-tp]').forEach(el=>{ el.placeholder=t(el.getAttribute('data-tp')); });
+  document.getElementById('foot').innerHTML=t('foot');
+  const hb=document.getElementById('hadithBar');
+  if(hb){ hb.href=LANG[cur].had.url; var ar=document.getElementById('hbArrow'); if(ar)ar.textContent=(cur==='ar')?'←':'→'; }
+  render();
+}
+function setLang(code){ if(!LANG[code])return; cur=code; try{localStorage.setItem(LKEY,code);}catch(e){} closeSheets(); applyLang(); }
+function openLang(){ renderLangOpts(); openScrim('langScrim'); }
+function renderLangOpts(){
+  const o=document.getElementById('langOpts'); o.innerHTML='';
+  ['en','de','ar'].forEach(code=>{
+    const d=document.createElement('div'); d.className='lang-opt'+(code===cur?' on':'');
+    d.onclick=()=>setLang(code);
+    d.innerHTML='<div><div class="lo-n">'+LANG[code].name+'</div></div><div class="lo-ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>';
+    o.appendChild(d);
+  });
+}
 
+/* ════════ render ════════ */
+function render(){ renderChips(); renderBoard(); renderHistory(); }
 function renderChips(){
   const c=document.getElementById('chips'); c.innerHTML='';
   DB.ex.forEach(e=>{
-    const L=logsOf(e.id), b=bestVal(e.id);
-    const d=document.createElement('div');
-    d.className='chip'+(e.id===sel?' on':'');
+    const b=bestVal(e.id);
+    const d=document.createElement('div'); d.className='chip'+(e.id===sel?' on':'');
     d.onclick=()=>{sel=e.id;DB.sel=sel;save();render();};
-    d.innerHTML='<div class="cn">'+esc(e.name)+'</div><div class="cm">'+(b==null?'—':fmt(b))+' <small>'+UNAME[e.unit]+'</small></div>';
+    d.innerHTML='<div class="cn">'+esc(e.name)+'</div><div class="cm">'+(b==null?'—':fmt(b))+' <small>'+un(e.unit)+'</small></div>';
     c.appendChild(d);
   });
-  const add=document.createElement('div');
-  add.className='chip add'; add.title='Add exercise';
+  const add=document.createElement('div'); add.className='chip add'; add.title=t('newEx');
   add.innerHTML='<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>';
-  add.onclick=()=>openExercise(null);
-  c.appendChild(add);
+  add.onclick=()=>openExercise(null); c.appendChild(add);
 }
-
 function renderBoard(){
   const e=exById(sel);
   const lf=document.querySelector('.logfield'), edit=document.querySelector('.ex-edit');
   if(!e){
-    document.getElementById('exName').textContent='No exercise yet';
+    document.getElementById('exName').textContent=t('noExercise');
     document.getElementById('logUnit').textContent='—';
-    document.getElementById('pbVal').className='pb-val empty';
-    document.getElementById('pbVal').textContent='—';
-    document.getElementById('stLast').textContent='—';
-    document.getElementById('stSessions').textContent='0';
-    document.getElementById('stAvg').textContent='—';
-    document.getElementById('logInput').disabled=true;
-    document.getElementById('addBtn').disabled=true;
+    document.getElementById('pbVal').className='pb-val empty'; document.getElementById('pbVal').textContent='—';
+    document.getElementById('stLast').textContent='—'; document.getElementById('stSessions').textContent='0'; document.getElementById('stAvg').textContent='—';
+    document.getElementById('logInput').disabled=true; document.getElementById('addBtn').disabled=true;
     if(lf)lf.style.opacity='.45'; if(edit)edit.style.display='none';
     document.getElementById('chart').innerHTML='<svg viewBox="0 0 1000 360" preserveAspectRatio="xMidYMid meet" style="cursor:pointer" onclick="openExercise(null)">'
-      +'<text x="500" y="170" text-anchor="middle" class="cv-txt" style="font-size:24px;fill:var(--volt)">Add your first exercise</text>'
-      +'<text x="500" y="202" text-anchor="middle" class="cv-txt" style="font-size:15px;fill:var(--faint)">— tap the + below, or here, to begin —</text>'
-      +'</svg>';
+      +'<text x="500" y="170" text-anchor="middle" class="cv-txt" style="font-size:24px;fill:var(--volt)">'+t('addFirst')+'</text>'
+      +'<text x="500" y="202" text-anchor="middle" class="cv-txt" style="font-size:15px;fill:var(--faint)">'+t('addFirstSub')+'</text></svg>';
     return;
   }
-  document.getElementById('logInput').disabled=false;
-  if(lf)lf.style.opacity='1'; if(edit)edit.style.display='';
+  document.getElementById('logInput').disabled=false; if(lf)lf.style.opacity='1'; if(edit)edit.style.display='';
   const L=logsOf(sel), b=bestVal(sel);
   document.getElementById('exName').textContent=e.name;
-  document.getElementById('logUnit').textContent=UNAME[e.unit];
+  document.getElementById('logUnit').textContent=un(e.unit);
   const pv=document.getElementById('pbVal');
   if(b==null){pv.className='pb-val empty';pv.textContent='—';}
-  else{pv.className='pb-val';pv.innerHTML=fmt(b)+'<small>'+UNAME[e.unit]+'</small>';}
-  document.getElementById('stLast').innerHTML = L.length? fmt(L[L.length-1].v)+'<small>'+UNAME[e.unit]+'</small>' : '—';
+  else{pv.className='pb-val';pv.innerHTML=fmt(b)+'<small>'+un(e.unit)+'</small>';}
+  document.getElementById('stLast').innerHTML=L.length?fmt(L[L.length-1].v)+'<small>'+un(e.unit)+'</small>':'—';
   document.getElementById('stSessions').textContent=L.length;
-  const avg = L.length? L.reduce((s,l)=>s+l.v,0)/L.length : null;
-  document.getElementById('stAvg').innerHTML = avg==null?'—':fmt(avg)+'<small>'+UNAME[e.unit]+'</small>';
+  const avg=L.length?L.reduce((s,l)=>s+l.v,0)/L.length:null;
+  document.getElementById('stAvg').innerHTML=avg==null?'—':fmt(avg)+'<small>'+un(e.unit)+'</small>';
   drawChart(e,L);
 }
-
-/* ════ CHART (custom SVG) ════ */
 function drawChart(e,L){
-  const box=document.getElementById('chart');
-  const W=1000,H=360,pl=14,pr=14,pt=40,pb=30;
+  const box=document.getElementById('chart'); const W=1000,H=360,pl=14,pr=14,pt=40,pb=30;
   if(!L.length){
     box.innerHTML='<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet">'
       +'<path class="cv-area" d="M14 250 C 200 250 230 150 360 150 S 560 90 700 110 S 880 70 986 60 L986 330 L14 330 Z" fill="rgba(202,255,63,.05)"/>'
       +'<path class="cv-line" style="opacity:.18" d="M14 250 C 200 250 230 150 360 150 S 560 90 700 110 S 880 70 986 60"/>'
-      +'<text x="500" y="180" text-anchor="middle" class="cv-txt" style="font-size:22px;fill:var(--muted)">Log your first set</text>'
-      +'<text x="500" y="210" text-anchor="middle" class="cv-txt" style="font-size:16px;fill:var(--faint)">— your strength curve will rise here —</text>'
-      +'</svg>';
+      +'<text x="500" y="180" text-anchor="middle" class="cv-txt" style="font-size:22px;fill:var(--muted)">'+t('emptyT')+'</text>'
+      +'<text x="500" y="210" text-anchor="middle" class="cv-txt" style="font-size:16px;fill:var(--faint)">'+t('emptyS')+'</text></svg>';
     return;
   }
   const vs=L.map(l=>l.v); let mn=Math.min.apply(null,vs),mx=Math.max.apply(null,vs);
   if(mn===mx){mn=mn-Math.max(1,mn*0.1);mx=mx+Math.max(1,mx*0.1);}
   const span=mx-mn; mn-=span*0.18; mx+=span*0.22; if(Math.min.apply(null,vs)>=0&&mn<0)mn=0;
   const n=L.length;
-  const X=i=> n===1? (W/2) : pl + i*(W-pl-pr)/(n-1);
-  const Y=v=> pt + (H-pt-pb)*(1-(v-mn)/(mx-mn));
+  const X=i=> n===1?(W/2):pl+i*(W-pl-pr)/(n-1);
+  const Y=v=> pt+(H-pt-pb)*(1-(v-mn)/(mx-mn));
   const P=L.map((l,i)=>({x:X(i),y:Y(l.v),v:l.v,t:l.t}));
   const bi=bestIdx(sel), bv=bestVal(sel);
-
-  // gridlines (3)
-  let grid='';
-  for(let g=0;g<=3;g++){const yy=pt+(H-pt-pb)*g/3; grid+='<line class="cv-grid" x1="'+pl+'" y1="'+yy.toFixed(1)+'" x2="'+(W-pr)+'" y2="'+yy.toFixed(1)+'"/>';}
-
-  // line + area
+  let grid=''; for(let g=0;g<=3;g++){const yy=pt+(H-pt-pb)*g/3; grid+='<line class="cv-grid" x1="'+pl+'" y1="'+yy.toFixed(1)+'" x2="'+(W-pr)+'" y2="'+yy.toFixed(1)+'"/>';}
   let line='M'+P.map(p=>p.x.toFixed(1)+' '+p.y.toFixed(1)).join(' L ');
-  let area=line+' L '+(P[n-1].x).toFixed(1)+' '+(H-pb)+' L '+(P[0].x).toFixed(1)+' '+(H-pb)+' Z';
-
-  // pb dashed line
+  let area=line+' L '+P[n-1].x.toFixed(1)+' '+(H-pb)+' L '+P[0].x.toFixed(1)+' '+(H-pb)+' Z';
   const pbY=Y(bv);
   let pbline='<line class="cv-pbline" x1="'+pl+'" y1="'+pbY.toFixed(1)+'" x2="'+(W-pr)+'" y2="'+pbY.toFixed(1)+'"/>';
-
-  // dots
   let dots='',hits='';
   P.forEach((p,i)=>{
-    if(i===bi){
-      dots+='<circle class="cv-pb" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="8" style="animation:pop .5s .6s both"/>';
-    } else if(i===n-1){
-      dots+='<circle class="cv-pulse" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="6"/>'
-           +'<circle class="cv-last" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="6"/>';
-    } else {
-      dots+='<circle class="cv-dot" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="4.5"/>';
-    }
+    if(i===bi)dots+='<circle class="cv-pb" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="8" style="animation:pop .5s .6s both"/>';
+    else if(i===n-1)dots+='<circle class="cv-pulse" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="6"/><circle class="cv-last" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="6"/>';
+    else dots+='<circle class="cv-dot" cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="4.5"/>';
     hits+='<rect class="hit" data-i="'+i+'" x="'+(p.x-22).toFixed(1)+'" y="0" width="44" height="'+H+'"/>';
   });
-
-  // pb flag + value label
-  const flagUp = P[bi].y > 70;
+  const flagUp=P[bi].y>70;
   let flag='<text class="cv-flag" x="'+P[bi].x.toFixed(1)+'" y="'+(flagUp?(P[bi].y-18):(P[bi].y+30)).toFixed(1)+'" text-anchor="middle">★ PB</text>'
     +'<text class="cv-vlab" x="'+P[bi].x.toFixed(1)+'" y="'+(flagUp?(P[bi].y-34):(P[bi].y+50)).toFixed(1)+'" text-anchor="middle" fill="var(--amber)">'+fmt(bv)+'</text>';
-
   box.innerHTML='<svg id="csvg" class="go" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet">'
-    +'<defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">'
-    +'<stop offset="0" stop-color="rgba(202,255,63,.34)"/><stop offset="1" stop-color="rgba(202,255,63,0)"/>'
-    +'</linearGradient></defs>'
-    +grid+pbline
-    +'<path class="cv-area" d="'+area+'" fill="url(#ag)"/>'
-    +'<path class="cv-line" pathLength="1" d="'+line+'"/>'
-    +dots+flag+hits
-    +'</svg>';
-
-  // tooltip interaction
+    +'<defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(202,255,63,.34)"/><stop offset="1" stop-color="rgba(202,255,63,0)"/></linearGradient></defs>'
+    +grid+pbline+'<path class="cv-area" d="'+area+'" fill="url(#ag)"/>'
+    +'<path class="cv-line" pathLength="1" d="'+line+'"/>'+dots+flag+hits+'</svg>';
   const svg=document.getElementById('csvg'), tip=document.getElementById('tip');
-  const show=(i,clientX)=>{
-    const p=P[i]; const r=svg.getBoundingClientRect();
-    const px=r.left+ (p.x/W)*r.width, py=r.top+(p.y/H)*r.height;
+  const show=(i)=>{ const p=P[i]; const r=svg.getBoundingClientRect();
+    const px=r.left+(p.x/W)*r.width, py=r.top+(p.y/H)*r.height;
     const host=document.getElementById('chart').getBoundingClientRect();
     tip.style.left=(px-host.left)+'px'; tip.style.top=(py-host.top)+'px';
     tip.className='tip show'+(i===bi?' pb':''); tip.style.opacity='1';
-    const dt=new Date(p.t); const ds=isNaN(dt)?p.t:dt.toLocaleDateString(undefined,{month:'short',day:'numeric'});
-    tip.innerHTML='<b>'+fmt(p.v)+' '+UNAME[e.unit]+'</b><span>'+ds+'</span>';
-  };
-  svg.querySelectorAll('.hit').forEach(h=>{
-    const i=+h.dataset.i;
-    h.addEventListener('pointerenter',ev=>show(i,ev.clientX));
-    h.addEventListener('pointerdown',ev=>show(i,ev.clientX));
-  });
+    const dt=new Date(p.t); const ds=isNaN(dt)?p.t:dt.toLocaleDateString(cur,{month:'short',day:'numeric'});
+    tip.innerHTML='<b>'+fmt(p.v)+' '+un(e.unit)+'</b><span>'+ds+'</span>'; };
+  svg.querySelectorAll('.hit').forEach(h=>{const i=+h.dataset.i;
+    h.addEventListener('pointerenter',()=>show(i)); h.addEventListener('pointerdown',()=>show(i));});
   svg.addEventListener('pointerleave',()=>{tip.style.opacity='0';});
 }
-
-/* ════ HISTORY ════ */
 function renderHistory(){
   const h=document.getElementById('hist'), e=exById(sel), L=logsOf(sel);
-  if(!e){ document.getElementById('histLab').textContent='History';
-    h.innerHTML='<div class="empty"><div class="et">No exercise yet</div><div class="es">Add an exercise above to start logging your sets.</div></div>'; return; }
-  document.getElementById('histLab').textContent='History'+(L.length?' · '+L.length:'');
-  if(!L.length){ h.innerHTML='<div class="empty"><div class="et">No sets yet</div><div class="es">Log your reps after each session and watch the curve climb.</div></div>'; return; }
-  const bi=bestIdx(sel);
-  h.innerHTML='';
+  if(!e){document.getElementById('histLab').textContent=t('history');
+    h.innerHTML='<div class="empty"><div class="et">'+t('noExercise')+'</div><div class="es">'+t('noExHistSub')+'</div></div>'; return;}
+  document.getElementById('histLab').textContent=t('history')+(L.length?' · '+L.length:'');
+  if(!L.length){h.innerHTML='<div class="empty"><div class="et">'+t('noSets')+'</div><div class="es">'+t('noSetsSub')+'</div></div>'; return;}
+  const bi=bestIdx(sel); h.innerHTML='';
   for(let i=L.length-1;i>=0;i--){
     const l=L[i], isBest=(i===bi);
-    const dt=new Date(l.t); const ds=isNaN(dt)?l.t:dt.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});
-    const row=document.createElement('div');
-    row.className='hrow'+(isBest?' best':'');
-    row.innerHTML='<div class="hv">'+fmt(l.v)+'<small>'+UNAME[e.unit]+'</small></div>'
+    const dt=new Date(l.t); const ds=isNaN(dt)?l.t:dt.toLocaleDateString(cur,{weekday:'short',month:'short',day:'numeric'});
+    const row=document.createElement('div'); row.className='hrow'+(isBest?' best':'');
+    row.innerHTML='<div class="hv">'+fmt(l.v)+'<small>'+un(e.unit)+'</small></div>'
       +'<div class="hmid"><div class="hd">'+ds+'</div>'+(l.n?'<div class="hn">'+esc(l.n)+'</div>':'')+'</div>'
-      +(isBest?'<div class="hbadge"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.9 1.2 7L12 17.8 5.8 21l1.2-7-5-4.9 7.1-.9z"/></svg>Best</div>':'')
-      +'<div class="hdel" title="Delete"><svg viewBox="0 0 24 24"><path d="M5 7h14M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></div>';
-    row.querySelector('.hdel').onclick=()=>delLog(i);
-    h.appendChild(row);
+      +(isBest?'<div class="hbadge"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.9 1.2 7L12 17.8 5.8 21l1.2-7-5-4.9 7.1-.9z"/></svg>'+t('best')+'</div>':'')
+      +'<div class="hdel" title="'+t('del')+'"><svg viewBox="0 0 24 24"><path d="M5 7h14M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg></div>';
+    row.querySelector('.hdel').onclick=()=>delLog(i); h.appendChild(row);
   }
 }
 
-/* ════ LOG ════ */
+/* ════════ log ════════ */
 function syncAdd(){const v=document.getElementById('logInput').value;document.getElementById('addBtn').disabled=!sel||!(v!==''&&!isNaN(parseFloat(v)));}
 function addLog(){
   const inp=document.getElementById('logInput'); const v=parseFloat(inp.value);
-  if(isNaN(v)||v<0){return;}
-  const e=exById(sel); if(!e)return;
-  const prevBest=bestVal(sel);
-  if(!DB.logs[sel])DB.logs[sel]=[];
-  DB.logs[sel].push({t:todayStr(),v:v,n:''});
-  save(); inp.value=''; syncAdd(); render();
-  const nb=bestVal(sel);
-  const isPB = prevBest==null || (e.dir==='up'? v>prevBest : v<prevBest);
-  if(isPB && DB.logs[sel].length>1){ toast('New personal best!', fmt(v)+' '+UNAME[e.unit], true); celebrate(); }
-  else { toast('Logged', fmt(v)+' '+UNAME[e.unit], false); }
+  if(isNaN(v)||v<0)return; const e=exById(sel); if(!e)return;
+  const prevBest=bestVal(sel); if(!DB.logs[sel])DB.logs[sel]=[];
+  DB.logs[sel].push({t:todayStr(),v:v,n:''}); save(); inp.value=''; syncAdd(); render();
+  const isPB=prevBest==null||(e.dir==='up'?v>prevBest:v<prevBest);
+  if(isPB&&DB.logs[sel].length>1){toast(t('tPB'),fmt(v)+' '+un(e.unit),true);celebrate();}
+  else toast(t('tLogged'),fmt(v)+' '+un(e.unit),false);
 }
-function delLog(i){
-  if(!confirm('Delete this set?'))return;
-  DB.logs[sel].splice(i,1); save(); render();
-}
+function delLog(i){if(!confirm(t('confDelSet')))return;DB.logs[sel].splice(i,1);save();render();}
 
-/* ════ EXERCISES ════ */
-function buildUnitSeg(){
-  const s=document.getElementById('unitSeg'); s.innerHTML='';
-  UNITS.forEach(u=>{const b=document.createElement('button');b.textContent=UNAME[u];b.dataset.u=u;
-    if(u===unitPick)b.classList.add('on');
-    b.onclick=()=>{unitPick=u;buildUnitSeg();}; s.appendChild(b);});
-}
+/* ════════ exercises ════════ */
+function buildUnitSeg(){const s=document.getElementById('unitSeg');s.innerHTML='';
+  UNITS.forEach(u=>{const b=document.createElement('button');b.textContent=un(u);b.dataset.u=u;if(u===unitPick)b.classList.add('on');b.onclick=()=>{unitPick=u;buildUnitSeg();};s.appendChild(b);});}
 function setDir(d){dirPick=d;document.querySelectorAll('#dirSeg button').forEach(b=>b.classList.toggle('on',b.dataset.dir===d));}
 document.querySelectorAll('#dirSeg button').forEach(b=>b.onclick=()=>setDir(b.dataset.dir));
-
 function openExercise(id){
-  exEditId=id;
-  const e=id?exById(id):null;
-  document.getElementById('exSheetH').textContent=e?'Edit exercise':'New exercise';
-  document.getElementById('exInput').value=e?e.name:'';
-  unitPick=e?e.unit:'reps'; dirPick=e?e.dir:'up';
-  buildUnitSeg(); setDir(dirPick);
-  document.getElementById('exDelBtn').style.display=e?'block':'none';
+  exEditId=id; const e=id?exById(id):null;
+  document.getElementById('exSheetH').textContent=e?t('editExH'):t('newEx');
+  document.getElementById('exInput').value=e?e.name:''; unitPick=e?e.unit:'reps'; dirPick=e?e.dir:'up';
+  buildUnitSeg(); setDir(dirPick); document.getElementById('exDelBtn').style.display=e?'block':'none';
   openScrim('exScrim'); setTimeout(()=>document.getElementById('exInput').focus(),250);
 }
-function editExercise(){openExercise(sel);}
+function editExercise(){if(sel)openExercise(sel);}
 function saveExercise(){
-  const name=document.getElementById('exInput').value.trim();
-  if(!name){document.getElementById('exInput').focus();return;}
+  const name=document.getElementById('exInput').value.trim(); if(!name){document.getElementById('exInput').focus();return;}
   if(exEditId){const e=exById(exEditId);e.name=name;e.unit=unitPick;e.dir=dirPick;}
   else{const e=mk(name,unitPick,dirPick);DB.ex.push(e);sel=e.id;DB.sel=sel;}
   save();closeSheets();render();
 }
 function deleteExercise(){
   const e=exById(exEditId); if(!e)return;
-  if(!confirm('Delete "'+e.name+'" and all its sets? This cannot be undone.'))return;
+  if(!confirm(t('confDelEx').replace('#',e.name)))return;
   DB.ex=DB.ex.filter(x=>x.id!==exEditId); delete DB.logs[exEditId];
   if(sel===exEditId){sel=DB.ex[0]?DB.ex[0].id:null;DB.sel=sel;}
   save();closeSheets();render();
 }
 
-/* ════ WARM-UP ════ */
-const WARMUP=[
-  {n:'March in place',d:60,c:'Easy pace, swing the arms — get the blood moving and the heart rate up.'},
-  {n:'Arm circles',d:30,c:'Big controlled circles forward, then reverse halfway through.'},
-  {n:'Shoulder & neck rolls',d:30,c:'Roll the shoulders back, then gentle side-to-side neck turns.'},
-  {n:'Torso twists',d:30,c:'Feet planted shoulder-width, rotate from the waist, arms loose.'},
-  {n:'Hip circles',d:30,c:'Hands on hips, draw big slow circles — each direction.'},
-  {n:'Leg swings',d:40,c:'Hold support. Swing each leg front-to-back, then across the body.'},
-  {n:'Bodyweight squats',d:40,c:'Slow and deep, chest up, knees tracking over the toes.'},
-  {n:'Walking lunges + reach',d:40,c:'Step, sink, reach overhead — open the hips and the chest.'},
-  {n:'Inchworms',d:30,c:'Hinge, walk the hands out to a plank, walk them back, stand tall.'},
-  {n:'High knees',d:30,c:'Quick and light, drive the knees up — finish strong.'}
-];
+/* ════════ warm-up ════════ */
 function openWarmup(){
-  const l=document.getElementById('wuList'); l.innerHTML='';
-  WARMUP.forEach((w,i)=>{const d=document.createElement('div');d.className='wu-it';
-    d.innerHTML='<div class="wn">'+(i+1)+'</div><div class="wmid"><div class="wt">'+w.n+'</div><div class="wc">'+w.c+'</div></div><div class="wdur">'+w.d+'<span style="font-size:11px">s</span></div>';
+  const l=document.getElementById('wuList'); l.innerHTML=''; const W=LANG[cur].warm;
+  W.forEach((w,i)=>{const d=document.createElement('div');d.className='wu-it';
+    d.innerHTML='<div class="wn">'+(i+1)+'</div><div class="wmid"><div class="wt">'+w.n+'</div><div class="wc">'+w.c+'</div></div><div class="wdur">'+WDUR[i]+'<span style="font-size:11px">s</span></div>';
     l.appendChild(d);});
   openScrim('wuScrim');
 }
-let wuIdx=0,wuLeft=0,wuTimer=null,wuPaused=false,wuRest=false;
-function startWarmup(){closeSheets();document.getElementById('player').classList.add('show');wuIdx=-1;wuRest=false;nextMove();}
+let wuIdx=0,wuLeft=0,wuTimer=null,wuPaused=false;
+function startWarmup(){closeSheets();document.getElementById('player').classList.add('show');
+  document.getElementById('plQuit').textContent=t('quit');document.getElementById('plSkip').textContent=t('skip');
+  wuIdx=-1;nextMove();}
 function nextMove(){
-  wuIdx++; if(wuIdx>=WARMUP.length){finishWarmup();return;}
-  const w=WARMUP[wuIdx]; wuLeft=w.d; wuPaused=false; wuRest=false;
-  document.getElementById('plPause').textContent='Pause';
-  document.getElementById('plStep').textContent='Move '+(wuIdx+1)+' of '+WARMUP.length;
-  document.getElementById('plName').textContent=w.n;
-  document.getElementById('plCue').textContent=w.c;
+  wuIdx++; const W=LANG[cur].warm; if(wuIdx>=W.length){finishWarmup();return;}
+  const w=W[wuIdx]; wuLeft=WDUR[wuIdx]; wuPaused=false;
+  document.getElementById('plPause').textContent=t('pause');
+  document.getElementById('plStep').textContent=t('moveOf').replace('#',wuIdx+1).replace('@',W.length);
+  document.getElementById('plName').textContent=w.n; document.getElementById('plCue').textContent=w.c;
   document.getElementById('plTime').className='pl-time';
-  document.getElementById('plNext').textContent = wuIdx+1<WARMUP.length? 'Next · '+WARMUP[wuIdx+1].n : 'Final move';
-  vibrate(40); tick(); arm();
+  document.getElementById('plNext').textContent=wuIdx+1<W.length?(t('nextLbl')+W[wuIdx+1].n):t('finalMove');
+  vibrate(40);tick();arm();
 }
-function arm(){clearInterval(wuTimer);wuTimer=setInterval(()=>{ if(wuPaused)return; wuLeft--; if(wuLeft<=0){vibrate(80);nextMove();return;} tick(); },1000);}
-function tick(){
-  const w=WARMUP[wuIdx];
-  document.getElementById('plTime').textContent=Math.max(0,wuLeft);
-  document.getElementById('plBar').style.width=(100*(w.d-wuLeft)/w.d)+'%';
-}
-function togglePause(){wuPaused=!wuPaused;document.getElementById('plPause').textContent=wuPaused?'Resume':'Pause';}
+function arm(){clearInterval(wuTimer);wuTimer=setInterval(()=>{if(wuPaused)return;wuLeft--;if(wuLeft<=0){vibrate(80);nextMove();return;}tick();},1000);}
+function tick(){document.getElementById('plTime').textContent=Math.max(0,wuLeft);document.getElementById('plBar').style.width=(100*(WDUR[wuIdx]-wuLeft)/WDUR[wuIdx])+'%';}
+function togglePause(){wuPaused=!wuPaused;document.getElementById('plPause').textContent=wuPaused?t('resume'):t('pause');}
 function skipMove(){vibrate(30);nextMove();}
 function stopWarmup(){clearInterval(wuTimer);document.getElementById('player').classList.remove('show');}
-function finishWarmup(){
-  clearInterval(wuTimer);
-  document.getElementById('plStep').textContent='Complete';
-  document.getElementById('plName').textContent='Warm-up done';
-  document.getElementById('plCue').textContent='Body primed. Now train hard, with the intention of strength for His obedience.';
-  document.getElementById('plTime').textContent='✓';
-  document.getElementById('plTime').className='pl-time rest';
-  document.getElementById('plBar').style.width='100%';
-  document.getElementById('plNext').textContent='';
-  vibrate([60,40,60]);
+function finishWarmup(){clearInterval(wuTimer);
+  document.getElementById('plStep').textContent=''; document.getElementById('plName').textContent=t('warmDoneT');
+  document.getElementById('plCue').textContent=t('warmDoneC'); document.getElementById('plTime').textContent='✓';
+  document.getElementById('plTime').className='pl-time rest'; document.getElementById('plBar').style.width='100%';
+  document.getElementById('plNext').textContent=''; vibrate([60,40,60]);}
+
+/* ════════ data ════════ */
+function exportData(){saveFile('quwwa-backup-'+todayStr()+'.json',JSON.stringify(DB,null,2),'application/json');}
+function importData(ev){const f=ev.target.files[0];if(!f)return;const rd=new FileReader();
+  rd.onload=()=>{try{const d=JSON.parse(rd.result);if(!d.ex||!Array.isArray(d.ex))throw 0;
+    DB=d;if(!DB.logs)DB.logs={};sel=DB.sel||(DB.ex[0]&&DB.ex[0].id)||null;save();closeSheets();render();toast(t('tRestored'),d.ex.length+'',false);
+  }catch(e){alert(t('alertImport'));}};
+  rd.onerror=()=>alert(t('alertRead')); rd.readAsText(f); ev.target.value='';}
+function resetAll(){if(!confirm(t('confReset')))return;try{localStorage.removeItem(KEY);}catch(e){}DB=null;load();save();closeSheets();render();}
+async function saveFile(filename,content,mime){
+  let blob;try{blob=new Blob([content],{type:mime});}catch(e){blob=null;}
+  if(blob&&navigator.canShare){try{const file=new File([blob],filename,{type:mime});
+    if(navigator.canShare({files:[file]})){await navigator.share({files:[file],title:filename});return;}}catch(e){if(e&&e.name==='AbortError')return;}}
+  try{const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();
+    setTimeout(()=>{URL.revokeObjectURL(url);a.remove();},800);return;}catch(e){}
+  try{const w=window.open('','_blank');if(w){w.document.write('<pre>'+content.replace(/</g,'&lt;')+'</pre>');return;}}catch(e){}
+  alert(t('alertSave'));
 }
 
-/* ════ DATA ════ */
-function exportData(){
-  const blob=JSON.stringify(DB,null,2);
-  saveFile('quwwa-backup-'+todayStr()+'.json', blob, 'application/json');
-}
-function importData(ev){
-  const f=ev.target.files[0]; if(!f)return;
-  const rd=new FileReader();
-  rd.onload=()=>{ try{
-      const d=JSON.parse(rd.result);
-      if(!d.ex||!Array.isArray(d.ex))throw 0;
-      DB=d; if(!DB.logs)DB.logs={}; sel=DB.sel||(DB.ex[0]&&DB.ex[0].id)||null;
-      save();closeSheets();render(); toast('Restored', d.ex.length+' exercises', false);
-    }catch(e){ alert('That file could not be read as a QUWWA backup.'); }
-  };
-  rd.onerror=()=>alert('Could not read the file.');
-  rd.readAsText(f); ev.target.value='';
-}
-function resetAll(){
-  if(!confirm('Reset everything? This permanently deletes every exercise and all your logged sets.\n\nTip: export a backup first.'))return;
-  try{localStorage.removeItem(KEY);}catch(e){}
-  DB=null; load(); save(); closeSheets(); render();
-}
-/* universal, browser-independent save (iOS in-app webviews included) */
-async function saveFile(filename, content, mime){
-  let blob; try{blob=new Blob([content],{type:mime});}catch(e){blob=null;}
-  if(blob && navigator.canShare){
-    try{const file=new File([blob],filename,{type:mime});
-      if(navigator.canShare({files:[file]})){await navigator.share({files:[file],title:filename});return;}
-    }catch(e){ if(e&&e.name==='AbortError')return; }
-  }
-  try{const url=URL.createObjectURL(blob); const a=document.createElement('a');
-    a.href=url;a.download=filename;document.body.appendChild(a);a.click();
-    setTimeout(()=>{URL.revokeObjectURL(url);a.remove();},800); return;
-  }catch(e){}
-  try{const w=window.open('','_blank'); if(w){w.document.write('<pre>'+content.replace(/</g,'&lt;')+'</pre>');return;}}catch(e){}
-  alert('Could not save automatically in this browser. Open QUWWA in Safari or Chrome to export, in shaa ALLAH.');
-}
-
-/* ════ UI helpers ════ */
+/* ════════ ui helpers ════════ */
 function openScrim(id){closeSheets();document.getElementById(id).classList.add('show');document.body.style.overflow='hidden';}
 function closeSheets(){document.querySelectorAll('.scrim').forEach(s=>s.classList.remove('show'));document.body.style.overflow='';}
 function openMenu(){openScrim('menuScrim');}
 let toastT=null;
-function toast(label,val,pb){
-  const t=document.getElementById('toast');
-  t.className='toast show'+(pb?' pb':'');
-  t.innerHTML='<div class="ti">'+(pb?'★':'✓')+'</div><div class="tt">'+(pb?'<b>'+label+'</b>'+val:label+' · '+val)+'</div>';
-  clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),2600);
-}
-function celebrate(){
-  const b=document.getElementById('board');
-  b.animate?b.animate([{boxShadow:'0 0 0 0 rgba(255,194,51,0)'},{boxShadow:'0 0 0 3px rgba(255,194,51,.6), 0 0 40px -4px rgba(255,194,51,.5)'},{boxShadow:'0 0 0 0 rgba(255,194,51,0)'}],{duration:1200,easing:'ease-out'}):0;
-  vibrate([50,40,80]);
-}
+function toast(label,val,pb){const el=document.getElementById('toast');el.className='toast show'+(pb?' pb':'');
+  el.innerHTML='<div class="ti">'+(pb?'★':'✓')+'</div><div class="tt">'+(pb?'<b>'+label+'</b>'+val:label+' · '+val)+'</div>';
+  clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),2600);}
+function celebrate(){const b=document.getElementById('board');
+  b.animate&&b.animate([{boxShadow:'0 0 0 0 rgba(255,194,51,0)'},{boxShadow:'0 0 0 3px rgba(255,194,51,.6),0 0 40px -4px rgba(255,194,51,.5)'},{boxShadow:'0 0 0 0 rgba(255,194,51,0)'}],{duration:1200,easing:'ease-out'});vibrate([50,40,80]);}
 function vibrate(p){try{navigator.vibrate&&navigator.vibrate(p);}catch(e){}}
 function esc(s){return (s+'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSheets();if(document.getElementById('player').classList.contains('show'))stopWarmup();}});
 
-/* ════ INIT ════ */
-load(); save(); render();
+/* ════════ init ════════ */
+load(); applyLang();
 </script>
 </body>
 </html>
