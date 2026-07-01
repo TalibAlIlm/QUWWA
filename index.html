@@ -6,6 +6,7 @@
 <meta name="theme-color" content="#0b0d0c">
 <meta name="description" content="QUWWA — a strength training log built on the hadith of the strong believer. Log your reps, watch your strength curve rise, and crown your personal best.">
 <title>QUWWA — Strength Log</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='112' fill='%2314181a'/%3E%3Crect x='150' y='150' width='212' height='212' fill='none' stroke='%23caff3f' stroke-width='13'/%3E%3Crect x='150' y='150' width='212' height='212' fill='none' stroke='%23caff3f' stroke-width='13' transform='rotate(45 256 256)'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=Cairo:wght@500;600;700&display=swap" rel="stylesheet">
@@ -531,7 +532,7 @@ function setLang(code){ if(!LANG[code])return; cur=code; try{localStorage.setIte
 function openLang(){ renderLangOpts(); openScrim('langScrim'); }
 function renderLangOpts(){
   const o=document.getElementById('langOpts'); o.innerHTML='';
-  ['en','de','ar'].forEach(code=>{
+  Object.keys(LANG).forEach(code=>{
     const d=document.createElement('div'); d.className='lang-opt'+(code===cur?' on':'');
     d.onclick=()=>setLang(code);
     d.innerHTML='<div><div class="lo-n">'+LANG[code].name+'</div></div><div class="lo-ck"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>';
